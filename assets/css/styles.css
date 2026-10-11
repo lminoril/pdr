@@ -474,6 +474,8 @@ html.theme-anim, html.theme-anim * {
 
 /* ---------- Секции ---------- */
 .section { padding: 84px 0; }
+/* при переходе по ссылке-якорю раздел не прячется под шапкой */
+section[id] { scroll-margin-top: 84px; }
 .section-alt { background: var(--surface-2); }
 
 .eyebrow {

@@ -25,9 +25,15 @@
 
   <link rel="stylesheet" href="assets/css/styles.css">
 
-  <!-- Тема без «мигания» при загрузке -->
+  <!-- Тема без «мигания» при загрузке + отключаем восстановление прокрутки браузером -->
   <script>
     (function () {
+      /* На телефонах браузер часто возвращает страницу на прошлое место прокрутки
+         или сразу прыгает к якорю из ссылки — отключаем это, сайт открывается с начала */
+      try {
+        if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+      } catch (e) { /* noop */ }
+
       try {
         var saved = localStorage.getItem('pdr-theme');
         var theme = saved || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
@@ -190,7 +196,7 @@
       <div class="container master-grid">
         <div class="master-card" data-anim="left">
           <div class="master-avatar">
-            <img src="assets/img/photos/master.jpg"
+            <img src="assets/img/photos/master.jpg" width="420" height="420"
                  onerror="this.onerror=null; this.src='assets/img/photos/master-placeholder.svg';"
                  alt="Андрей Маматраимов — PDR-мастер" loading="lazy">
           </div>
@@ -231,7 +237,7 @@
         <div class="works-grid" data-stagger>
           <article class="work-card" data-anim="up">
             <div class="work-media">
-              <img class="zoomable" src="assets/img/photos/work-1.jpg"
+              <img class="zoomable" src="assets/img/photos/work-1.jpg" width="1200" height="797"
                    onerror="this.onerror=null; this.src='assets/img/photos/work-placeholder.svg';"
                    alt="Вмятина на переднем крыле: до и после выпрямления без покраски" loading="lazy">
               <span class="badge badge-before">ДО</span>
@@ -245,7 +251,7 @@
 
           <article class="work-card" data-anim="up">
             <div class="work-media">
-              <img class="zoomable" src="assets/img/photos/work-2.jpg"
+              <img class="zoomable" src="assets/img/photos/work-2.jpg" width="1200" height="797"
                    onerror="this.onerror=null; this.src='assets/img/photos/work-placeholder.svg';"
                    alt="Вмятина на крышке багажника: до и после ремонта PDR" loading="lazy">
               <span class="badge badge-before">ДО</span>
@@ -259,7 +265,7 @@
 
           <article class="work-card" data-anim="up">
             <div class="work-media">
-              <img class="zoomable" src="assets/img/photos/work-3.jpg"
+              <img class="zoomable" src="assets/img/photos/work-3.jpg" width="1200" height="706"
                    onerror="this.onerror=null; this.src='assets/img/photos/work-placeholder.svg';"
                    alt="Вмятина на заднем крыле: до и после выпрямления без покраски" loading="lazy">
               <span class="badge badge-before">ДО</span>
@@ -273,7 +279,7 @@
 
           <article class="work-card" data-anim="up">
             <div class="work-media">
-              <img class="zoomable" src="assets/img/photos/work-4.jpg"
+              <img class="zoomable" src="assets/img/photos/work-4.jpg" width="1200" height="675"
                    onerror="this.onerror=null; this.src='assets/img/photos/work-placeholder.svg';"
                    alt="Вмятина на капоте: до и после ремонта без покраски" loading="lazy">
               <span class="badge badge-before">ДО</span>
@@ -287,7 +293,7 @@
 
           <article class="work-card" data-anim="up">
             <div class="work-media">
-              <img class="zoomable" src="assets/img/photos/work-5.jpg"
+              <img class="zoomable" src="assets/img/photos/work-5.jpg" width="1200" height="1066"
                    onerror="this.onerror=null; this.src='assets/img/photos/work-placeholder.svg';"
                    alt="Вмятина на крышке багажника: до и после ремонта без покраски" loading="lazy">
               <span class="badge badge-before">ДО</span>

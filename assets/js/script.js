@@ -11,6 +11,35 @@
     reducedMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   } catch (e) { /* noop */ }
 
+  /* ---------- Страница всегда открывается с начала ----------
+     На телефонах браузер часто возвращает страницу на прежнее место прокрутки
+     или сразу переходит к якорю из ссылки (#works и т.п.), из-за чего посетитель
+     попадает в середину сайта. Отключаем восстановление прокрутки и поднимаем
+     страницу вверх — до тех пор, пока посетитель сам не начал листать. */
+  try {
+    if (window.history && "scrollRestoration" in window.history) {
+      window.history.scrollRestoration = "manual";
+    }
+
+    var userScrolled = false;
+    ["wheel", "touchstart", "touchmove", "keydown", "pointerdown"].forEach(function (evt) {
+      window.addEventListener(evt, function () { userScrolled = true; }, { passive: true, once: true });
+    });
+
+    var scrollToTop = function () {
+      if (!userScrolled) window.scrollTo(0, 0);
+    };
+
+    /* убираем якорь из адреса, чтобы браузер не «прыгал» в раздел при загрузке */
+    if (window.location.hash) {
+      window.history.replaceState(null, "", window.location.pathname + window.location.search);
+    }
+
+    scrollToTop();
+    window.addEventListener("load", scrollToTop);
+    window.addEventListener("pageshow", function (e) { if (!e.persisted) scrollToTop(); });
+  } catch (e) { /* noop */ }
+
   try {
 
     /* ---------- Переключатель темы ---------- */
