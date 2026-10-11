@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800">
+  <defs>
+    <linearGradient id="bgL" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#E7EEF8"/>
+      <stop offset="1" stop-color="#C4D4E8"/>
+    </linearGradient>
+    <linearGradient id="bgR" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#EDF3FA"/>
+      <stop offset="1" stop-color="#D6E4F3"/>
+    </linearGradient>
+    <radialGradient id="dent" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#8FA8C7"/>
+      <stop offset="1" stop-color="#C4D4E8"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Левая половина: ДО -->
+  <rect x="0" y="0" width="594" height="800" fill="url(#bgL)"/>
+  <rect x="120" y="180" width="360" height="400" rx="28" fill="#D5E1F0" stroke="#A9BDD8" stroke-width="3"/>
+  <ellipse cx="270" cy="330" rx="60" ry="48" fill="url(#dent)"/>
+  <ellipse cx="350" cy="450" rx="44" ry="34" fill="url(#dent)"/>
+  <text x="60" y="140" font-family="Arial, Helvetica, sans-serif" font-size="76" font-weight="bold" fill="#3D5F93" opacity="0.75">ДО</text>
+  <text x="300" y="690" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="34" fill="#47608A">вмятина до ремонта</text>
+
+  <!-- Разделитель -->
+  <rect x="594" y="0" width="12" height="800" fill="#FFFFFF"/>
+
+  <!-- Правая половина: ПОСЛЕ -->
+  <rect x="606" y="0" width="594" height="800" fill="url(#bgR)"/>
+  <rect x="726" y="180" width="360" height="400" rx="28" fill="#EAF2FB" stroke="#A9BDD8" stroke-width="3"/>
+  <path d="M750 210 L830 560 L775 560 Z" fill="#FFFFFF" opacity="0.6"/>
+  <circle cx="906" cy="380" r="58" fill="#4C8FD6"/>
+  <path d="M876 380 L896 401 L938 354" fill="none" stroke="#FFFFFF" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="640" y="140" font-family="Arial, Helvetica, sans-serif" font-size="76" font-weight="bold" fill="#2E6FA3" opacity="0.75">ПОСЛЕ</text>
+  <text x="906" y="690" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="34" fill="#47608A">панель после ремонта</text>
+</svg>

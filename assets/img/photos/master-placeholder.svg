@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#E8EFF8"/>
+      <stop offset="1" stop-color="#C9D8EC"/>
+    </linearGradient>
+    <linearGradient id="avatar" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#D7E4F3"/>
+      <stop offset="1" stop-color="#AFC4DE"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="1000" fill="url(#bg)"/>
+  <circle cx="400" cy="330" r="150" fill="url(#avatar)"/>
+  <circle cx="400" cy="330" r="150" fill="none" stroke="#7E97BB" stroke-width="3" stroke-dasharray="4 10" stroke-linecap="round"/>
+  <circle cx="400" cy="262" r="52" fill="#5F7BA3"/>
+  <path d="M292 430 C292 356 340 320 400 320 C460 320 508 356 508 430 L508 486 L292 486 Z" fill="#5F7BA3"/>
+  <text x="400" y="640" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="46" font-weight="bold" fill="#47608A">Фото мастера</text>
+  <text x="400" y="700" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="30" fill="#6E85A8">замените файл master.jpg</text>
+</svg>
