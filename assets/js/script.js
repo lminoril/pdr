@@ -218,10 +218,8 @@
       lightboxImg.src = img.getAttribute("src");
       lightboxImg.alt = img.getAttribute("alt") || "";
       if (lightboxCaption) {
-        var card = img.closest ? img.closest(".work-card") : null;
-        var title = card ? card.querySelector(".work-caption h3") : null;
-        var text = card ? card.querySelector(".work-caption p") : null;
-        lightboxCaption.textContent = title ? title.textContent + (text ? ". " + text.textContent : "") : "";
+        /* подписи под фото не показываем — только пояснение про формат кадра */
+        lightboxCaption.textContent = "Слева — до ремонта, справа — после";
       }
       lightbox.classList.add("open");
       lightbox.setAttribute("aria-hidden", "false");
