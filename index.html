@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru" data-theme="light">
+<html lang="ru" data-theme="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,37 +17,35 @@
 
   <link rel="icon" href="data:,">
 
-  <!-- Шрифты: Unbounded (заголовки), Onest (текст), JetBrains Mono (подписи и числа) -->
+  <!-- Шрифты -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;600;700&family=Onest:wght@300..700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Onest:wght@300..700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="stylesheet" href="assets/css/styles.css?v=20261024">
 
-  <!-- Тема без «мигания» + отключаем восстановление прокрутки браузером -->
+  <!-- Тема + отключение восстановления прокрутки -->
   <script>
     (function () {
-      /* На телефонах браузер часто возвращает страницу на прошлое место прокрутки
-         или сразу прыгает к якорю из ссылки — отключаем это, сайт открывается с начала */
       try {
         if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
       } catch (e) { /* noop */ }
 
       try {
         var saved = localStorage.getItem('pdr-theme');
-        var theme = saved || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        var theme = saved || (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
         document.documentElement.setAttribute('data-theme', theme);
-      } catch (e) { /* localStorage недоступен — остаёмся на светлой */ }
+      } catch (e) { /* noop */ }
     })();
   </script>
   <noscript>
     <style>
       [data-anim] { opacity: 1 !important; transform: none !important; }
-      .hero__lead, .hero__title, .hero__sub, .hero__cta, .hero__meta { opacity: 1 !important; animation: none !important; }
+      .hero__chip, .hero__title, .hero__sub, .hero__btns, .hero__facts { opacity: 1 !important; animation: none !important; }
     </style>
   </noscript>
 
-  <!-- Микроразметка для поисковиков -->
+  <!-- Микроразметка -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -79,14 +77,14 @@
 </head>
 <body>
 
-  <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+  <div class="progress" id="scrollProgress" aria-hidden="true"></div>
 
   <!-- ======= ШАПКА ======= -->
-  <header class="site-header" id="siteHeader">
-    <div class="wrap header__inner">
-      <a class="brand" href="#hero" aria-label="PDR — выпрямление вмятин без покраски, на главную">
-        <span class="brand__mark">PDR</span>
-        <span class="brand__caption">выпрямление вмятин<br>без покраски</span>
+  <header class="hdr" id="siteHeader">
+    <div class="wrap hdr__in">
+      <a class="logo" href="#hero" aria-label="PDR — выпрямление вмятин без покраски">
+        <span class="logo__mark">PDR</span>
+        <span class="logo__sub">выпрямление вмятин<br>без покраски</span>
       </a>
 
       <nav class="nav" id="siteNav" aria-label="Основная навигация">
@@ -97,14 +95,12 @@
         <a href="#contacts">Контакты</a>
       </nav>
 
-      <div class="header__actions">
-        <button class="theme-toggle" id="themeToggle" type="button" aria-label="Переключить тему: светлая / тёмная" title="Светлая / тёмная тема">
+      <div class="hdr__act">
+        <button class="iconbtn" id="themeToggle" type="button" aria-label="Переключить тему: светлая / тёмная" title="Светлая / тёмная тема">
           <svg class="icon-sun" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M6.76 4.84l-1.8-1.79-1.41 1.41 1.79 1.79 1.42-1.41zM4 10.5H1v2h3v-2zm9-9.95h-2V3.5h2V.55zm7.45 3.91l-1.41-1.41-1.79 1.79 1.41 1.41 1.79-1.79zm-3.21 13.7l1.79 1.8 1.41-1.41-1.8-1.79-1.4 1.4zM20 10.5v2h3v-2h-3zm-8-5c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6-2.69-6-6-6zm-1 16.95h2V19.5h-2v2.95zm-7.45-3.91l1.41 1.41 1.79-1.8-1.41-1.41-1.79 1.8z"/></svg>
           <svg class="icon-moon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z"/></svg>
         </button>
-        <a class="btn btn--solid btn--sm header__phone" href="tel:+79973637024">
-          <span>+7 997 363 70 24</span>
-        </a>
+        <a class="btn btn--grad btn--sm hdr__phone" href="tel:+79973637024">+7 997 363 70 24</a>
         <button class="burger" id="burger" type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="siteNav">
           <span></span><span></span><span></span>
         </button>
@@ -115,112 +111,95 @@
   <main>
     <!-- ======= ГЛАВНЫЙ ЭКРАН ======= -->
     <section class="hero" id="hero">
-      <div class="hero__media" aria-hidden="true"></div>
-      <div class="wrap hero__inner">
-        <p class="hero__lead mono">PDR · Paintless Dent Repair · Балашиха</p>
-        <h1 class="hero__title">Выпрямление вмятин<br>на вашем авто</h1>
-        <p class="hero__sub">Правим металл изнутри панели — без шпатлёвки, грунта и подбора краски. Заводское лакокрасочное покрытие остаётся на месте.</p>
-        <div class="hero__cta">
-          <a class="btn btn--solid" href="tel:+79973637024">Позвонить и записаться</a>
-          <a class="btn btn--outline" href="#works">Смотреть работы</a>
+      <div class="hero__glow" aria-hidden="true"></div>
+      <div class="wrap hero__in">
+        <div class="hero__text">
+          <span class="hero__chip chip">PDR · Балашиха · без покраски</span>
+          <h1 class="hero__title">Выпрямление вмятин<br><span class="grad">на вашем авто</span></h1>
+          <p class="hero__sub">Правим металл изнутри панели — без шпатлёвки, грунта и подбора краски. Заводское лакокрасочное покрытие остаётся на месте.</p>
+          <div class="hero__btns">
+            <a class="btn btn--grad" href="tel:+79973637024">Позвонить и записаться</a>
+            <a class="btn btn--ghost" href="#works">Смотреть работы</a>
+          </div>
+          <ul class="hero__facts">
+            <li><b>4,9</b><span>рейтинг на Авито</span></li>
+            <li><b>66</b><span>отзывов</span></li>
+            <li><b>0</b><span>покраски</span></li>
+          </ul>
         </div>
-        <div class="hero__meta">
-          <div class="hero__meta-item">
-            <span class="mono">Адрес</span>
-            <span>Керамическая ул., 3с7 — рядом с Teboil</span>
-          </div>
-          <div class="hero__meta-item">
-            <span class="mono">Запись</span>
-            <span>по телефону, ежедневно</span>
-          </div>
-          <div class="hero__meta-item">
-            <span class="mono">Для клиентов</span>
-            <span>бесплатное такси по городу</span>
-          </div>
-        </div>
+
+        <figure class="hero__photo">
+          <img src="assets/img/hero-mustang.jpg" alt="Классический Мустанг в синих тонах — фон для PDR-сервиса" width="1024" height="683">
+          <figcaption class="mono">Балашиха · Керамическая ул., 3с7</figcaption>
+        </figure>
       </div>
     </section>
 
     <!-- ======= 01 МЕТОД ======= -->
     <section class="sec" id="method">
       <div class="wrap">
-        <header class="sec__head" data-anim="up">
-          <span class="sec__idx mono">01</span>
-          <h2 class="sec__title">Метод</h2>
-          <p class="sec__kicker">Почему краска остаётся заводской</p>
-        </header>
-
-        <div class="split">
-          <p class="lead" data-anim="up">Не стоит торопиться с покраской автомобиля — многие вмятины можно устранить без повреждения краски, что позволит сэкономить ваше время и средства. Для клиентов предоставляется бесплатная услуга такси по городу.</p>
-          <p class="note" data-anim="up">PDR (Paintless Dent Repair) — технология, при которой мастер специальными инструментами аккуратно выдавливает металл изнутри панели, возвращая ему заводскую форму. Лакокрасочное покрытие не повреждается: не нужны шпатлёвка, грунт и подбор цвета. Технологию применяют производители и дилеры по всему миру.</p>
+        <div class="sec__head" data-anim="up">
+          <span class="chip">01 · Метод</span>
+          <h2>Почему краска остаётся заводской</h2>
         </div>
 
-        <ol class="nums" data-stagger>
-          <li class="nums__item" data-anim="up">
-            <span class="nums__n mono">01</span>
+        <p class="lead" data-anim="up">Не стоит торопиться с покраской автомобиля — многие вмятины можно устранить без повреждения краски, что позволит сэкономить ваше время и средства. Для клиентов предоставляется бесплатная услуга такси по городу.</p>
+
+        <div class="cards" data-stagger>
+          <article class="card" data-anim="up">
+            <span class="card__ico">✦</span>
             <h3>Без покраски</h3>
             <p>Металл правится изнутри панели. Краска, лак и заводская геометрия не страдают.</p>
-          </li>
-          <li class="nums__item" data-anim="up">
-            <span class="nums__n mono">02</span>
+          </article>
+          <article class="card" data-anim="up">
+            <span class="card__ico">⚡</span>
             <h3>Быстрее кузовного</h3>
             <p>Большинство вмятин убирается за один визит — без недель ожидания и перекраски.</p>
-          </li>
-          <li class="nums__item" data-anim="up">
-            <span class="nums__n mono">03</span>
+          </article>
+          <article class="card" data-anim="up">
+            <span class="card__ico">🚕</span>
             <h3>Бесплатное такси</h3>
             <p>Развезём по городу, пока машина в работе — это входит в стоимость.</p>
-          </li>
-          <li class="nums__item" data-anim="up">
-            <span class="nums__n mono">04</span>
+          </article>
+          <article class="card" data-anim="up">
+            <span class="card__ico">↗</span>
             <h3>Плюс к цене</h3>
             <p>Родное ЛКП на месте — автомобиль дороже при продаже, без следов ремонта.</p>
-          </li>
-        </ol>
+          </article>
+        </div>
+
+        <p class="note" data-anim="up">PDR (Paintless Dent Repair) — технология, при которой мастер специальными инструментами аккуратно выдавливает металл изнутри панели, возвращая ему заводскую форму. Лакокрасочное покрытие не повреждается: не нужны шпатлёвка, грунт и подбор цвета. Технологию применяют производители и дилеры по всему миру.</p>
       </div>
     </section>
 
     <!-- ======= 02 МАСТЕР ======= -->
-    <section class="sec sec--figure" id="master">
-      <div class="wrap master">
-        <figure class="master__figure" data-anim="up">
-          <img src="assets/img/photos/master.jpg" width="420" height="420"
-               onerror="this.onerror=null; this.src='assets/img/photos/master-placeholder.svg';"
-               alt="Андрей Маматраимов — PDR-мастер">
-          <figcaption class="mono">Андрей Маматраимов · PDR-мастер</figcaption>
-        </figure>
+    <section class="sec" id="master">
+      <div class="wrap">
+        <div class="sec__head" data-anim="up">
+          <span class="chip">02 · Мастер</span>
+          <h2>Андрей Маматраимов</h2>
+        </div>
 
-        <div class="master__body">
-          <header class="sec__head" data-anim="up">
-            <span class="sec__idx mono">02</span>
-            <h2 class="sec__title">Мастер</h2>
-            <p class="sec__kicker">Кто будет работать с вашим авто</p>
-          </header>
-          <p data-anim="up">Меня зовут Андрей. Я прошёл курс обучения и успешно сдал экзамен по технологии удаления вмятин без покраски PDR (Paintless Dent Repair), разработанной инженерами Mercedes-Benz.</p>
-          <p data-anim="up">К каждому автомобилю отношусь как к своему: сначала — бесплатный осмотр и честная оценка, и только потом — работа. Вы всегда знаете, что и зачем делается.</p>
+        <div class="master">
+          <figure class="master__photo" data-anim="up">
+            <img src="assets/img/photos/master.jpg" width="420" height="420"
+                 onerror="this.onerror=null; this.src='assets/img/photos/master-placeholder.svg';"
+                 alt="Андрей Маматраимов — PDR-мастер">
+            <figcaption class="mono">PDR-мастер · Балашиха</figcaption>
+          </figure>
 
-          <dl class="facts" data-anim="up">
-            <div class="facts__row">
-              <dt class="mono">Обучение</dt>
-              <dd>курс и экзамен по PDR пройдены</dd>
+          <div class="master__body" data-anim="up">
+            <div class="chips">
+              <span class="chip chip--accent">Авито 4,9 · 66 отзывов</span>
+              <span class="chip">на Авито с 2020 года</span>
+              <span class="chip">PDR · Mercedes-Benz</span>
             </div>
-            <div class="facts__row">
-              <dt class="mono">Осмотр</dt>
-              <dd>бесплатно, с оценкой по фото</dd>
+            <p>Прошёл курс обучения и успешно сдал экзамен по технологии удаления вмятин без покраски PDR (Paintless Dent Repair), разработанной инженерами Mercedes-Benz.</p>
+            <p>К каждому автомобилю отношусь как к своему: сначала — бесплатный осмотр и честная оценка, и только потом работа.</p>
+            <div class="master__btns">
+              <a class="btn btn--grad" href="tel:+79973637024">Записаться на осмотр</a>
+              <a class="btn btn--ghost" href="#works">Мои работы</a>
             </div>
-            <div class="facts__row">
-              <dt class="mono">Работа</dt>
-              <dd>подсветка и контроль отражений</dd>
-            </div>
-            <div class="facts__row">
-              <dt class="mono">Авито</dt>
-              <dd>4,9 из 5 — 66 отзывов, на Авито с 2020 года</dd>
-            </div>
-          </dl>
-
-          <div class="master__cta" data-anim="up">
-            <a class="btn btn--solid" href="tel:+79973637024">Записаться на осмотр</a>
-            <a class="link-arrow" href="#works">мои работы</a>
           </div>
         </div>
       </div>
@@ -229,11 +208,11 @@
     <!-- ======= 03 РАБОТЫ ======= -->
     <section class="sec" id="works">
       <div class="wrap">
-        <header class="sec__head" data-anim="up">
-          <span class="sec__idx mono">03</span>
-          <h2 class="sec__title">Работы</h2>
-          <p class="sec__kicker">Каждая пара — один кадр: слева до, справа после</p>
-        </header>
+        <div class="sec__head" data-anim="up">
+          <span class="chip">03 · Работы</span>
+          <h2>До и после</h2>
+          <p class="sec__sub">Каждая пара — один кадр: слева до, справа после. Нажмите, чтобы открыть крупно.</p>
+        </div>
 
         <div class="works" data-stagger>
           <figure class="work" data-anim="up">
@@ -264,71 +243,59 @@
         </div>
 
         <div class="works__foot" data-anim="up">
-          <p class="note">Нажмите на фото — откроется крупнее. Фото вмятины можно прислать в мессенджеры, предварительно оценю по снимку.</p>
-          <a class="link-arrow" href="https://www.avito.ru/balashiha/predlozheniya_uslug/udalenie_vmyatin.skoly_tsarapiny_pritertosti_7815733376" target="_blank" rel="noopener">больше работ и цен на Авито</a>
+          <p class="note">Пришлите фото вмятины в мессенджеры — предварительно оценю по снимку.</p>
+          <a class="btn btn--ghost btn--sm" href="https://www.avito.ru/balashiha/predlozheniya_uslug/udalenie_vmyatin.skoly_tsarapiny_pritertosti_7815733376" target="_blank" rel="noopener">Больше работ на Авито</a>
         </div>
       </div>
     </section>
 
     <!-- ======= 04 ОТЗЫВЫ ======= -->
-    <section class="sec sec--figure" id="reviews">
+    <section class="sec" id="reviews">
       <div class="wrap">
-        <header class="sec__head" data-anim="up">
-          <span class="sec__idx mono">04</span>
-          <h2 class="sec__title">Отзывы</h2>
-          <p class="sec__kicker">Авито и Яндекс Карты</p>
-        </header>
+        <div class="sec__head" data-anim="up">
+          <span class="chip">04 · Отзывы</span>
+          <h2>Рейтинг и отзывы</h2>
+        </div>
 
         <div class="rating" data-anim="up">
-          <div class="rating__item">
-            <span class="rating__value">4,9</span>
-            <span class="rating__stars" aria-label="Оценка 4,9 из 5 на Авито">
-              <span class="stars-empty">★★★★★</span>
-              <span class="stars-filled" style="width: 98%">★★★★★</span>
-            </span>
-            <span class="rating__meta mono">66 отзывов · Авито</span>
-          </div>
-          <div class="rating__item">
-            <span class="rating__value">4,3</span>
-            <span class="rating__stars" aria-label="Оценка 4,3 из 5 в Яндекс Картах">
-              <span class="stars-empty">★★★★★</span>
-              <span class="stars-filled" style="width: 86%">★★★★★</span>
-            </span>
-            <span class="rating__meta mono">6 отзывов · Яндекс</span>
-          </div>
+          <span class="rating__value">4,9</span>
+          <span class="rating__stars" aria-label="Оценка 4,9 из 5 на Авито">
+            <span class="stars-empty">★★★★★</span>
+            <span class="stars-filled" style="width: 98%">★★★★★</span>
+          </span>
+          <span class="rating__meta">66 отзывов · Авито</span>
           <span class="rating__note mono">на Авито с 2020 года</span>
         </div>
 
-        <div class="quotes" data-stagger>
-          <figure class="quote" data-anim="up">
-            <blockquote>Все прошло на ура. Сделали вмятину как и не было её там никогда. Однозначно рекомендую.</blockquote>
-            <figcaption><span class="quote__author">Евгений</span><span class="mono">05.10.2026 · Авито</span></figcaption>
-          </figure>
-          <figure class="quote" data-anim="up">
-            <blockquote>Работа выполнена хорошо. Не ждал идеала, но и плохо не назовёшь. Всё что беспокоило в авто — Андрей исправил.</blockquote>
-            <figcaption><span class="quote__author">Fendi</span><span class="mono">29.09.2026 · Авито</span></figcaption>
-          </figure>
-          <figure class="quote" data-anim="up">
-            <blockquote>Мастер своего дела, рекомендую</blockquote>
-            <figcaption><span class="quote__author">Александр</span><span class="mono">23.09.2026 · Авито</span></figcaption>
-          </figure>
-          <figure class="quote" data-anim="up">
-            <blockquote>Приехал с замятым порогом об высокий колодец, мастер посмотрел, сказал попробует. В итоге всё получилось по максимуму возможностей клеевым вытягиванием. Работой остался доволен.</blockquote>
-            <figcaption><span class="quote__author">skza92</span><span class="mono">13.02.2025 · Яндекс</span></figcaption>
-          </figure>
-          <figure class="quote" data-anim="up">
-            <blockquote>Всё сделано профессионально. Машина как новая и красить не пришлось. Супер!</blockquote>
-            <figcaption><span class="quote__author">Николай Королев</span><span class="mono">22.11.2024 · Яндекс</span></figcaption>
-          </figure>
-          <figure class="quote" data-anim="up">
-            <blockquote>Отличный PDR-сервис. Не первый раз обращаюсь, приемлемые цены, а главное — качество выполненных работ просто на высоте. Огромная благодарность мастеру Андрею.</blockquote>
-            <figcaption><span class="quote__author">Дядя_Вася</span><span class="mono">15.11.2024 · Яндекс</span></figcaption>
-          </figure>
+        <div class="revs" data-stagger>
+          <article class="rev" data-anim="up">
+            <div class="rev__top">
+              <span class="rev__ava">Е</span>
+              <div class="rev__who"><b>Евгений</b><span class="mono">05.10.2026 · Авито</span></div>
+            </div>
+            <div class="rev__stars" aria-label="Оценка 5 из 5">★★★★★</div>
+            <p>Все прошло на ура. Сделали вмятину как и не было её там никогда. Однозначно рекомендую.</p>
+          </article>
+          <article class="rev" data-anim="up">
+            <div class="rev__top">
+              <span class="rev__ava">F</span>
+              <div class="rev__who"><b>Fendi</b><span class="mono">29.09.2026 · Авито</span></div>
+            </div>
+            <div class="rev__stars" aria-label="Оценка 5 из 5">★★★★★</div>
+            <p>Работа выполнена хорошо. Не ждал идеала, но и плохо не назовёшь. Всё что беспокоило в авто — Андрей исправил.</p>
+          </article>
+          <article class="rev" data-anim="up">
+            <div class="rev__top">
+              <span class="rev__ava">А</span>
+              <div class="rev__who"><b>Александр</b><span class="mono">23.09.2026 · Авито</span></div>
+            </div>
+            <div class="rev__stars" aria-label="Оценка 5 из 5">★★★★★</div>
+            <p>Мастер своего дела, рекомендую</p>
+          </article>
         </div>
 
-        <div class="reviews__foot" data-anim="up">
-          <a class="btn btn--outline" href="https://yandex.ru/maps/org/udaleniye_vmyatin/137428932992/reviews/" target="_blank" rel="noopener">Все отзывы на Яндексе</a>
-          <a class="btn btn--outline" href="https://www.avito.ru/balashiha/predlozheniya_uslug/udalenie_vmyatin.skoly_tsarapiny_pritertosti_7815733376" target="_blank" rel="noopener">Отзывы на Авито</a>
+        <div class="sec__actions" data-anim="up">
+          <a class="btn btn--ghost btn--sm" href="https://www.avito.ru/balashiha/predlozheniya_uslug/udalenie_vmyatin.skoly_tsarapiny_pritertosti_7815733376" target="_blank" rel="noopener">Все отзывы на Авито</a>
         </div>
       </div>
     </section>
@@ -336,39 +303,37 @@
     <!-- ======= 05 КОНТАКТЫ ======= -->
     <section class="sec" id="contacts">
       <div class="wrap">
-        <header class="sec__head" data-anim="up">
-          <span class="sec__idx mono">05</span>
-          <h2 class="sec__title">Контакты</h2>
-          <p class="sec__kicker">Позвоните — запишем на осмотр</p>
-        </header>
+        <div class="sec__head" data-anim="up">
+          <span class="chip">05 · Контакты</span>
+          <h2>Записаться на осмотр</h2>
+        </div>
 
-        <div class="contacts" data-stagger>
-          <div class="contacts__row" data-anim="up">
-            <span class="contacts__label mono">Телефон</span>
-            <a class="contacts__value" href="tel:+79973637024">+7 997 363 70 24</a>
-            <span class="contacts__note">звонки и сообщения, ежедневно</span>
+        <div class="tiles" data-stagger>
+          <a class="tile" href="tel:+79973637024" data-anim="up">
+            <span class="tile__label mono">Телефон</span>
+            <span class="tile__value">+7 997 363 70 24</span>
+            <span class="tile__note">звонки и сообщения, ежедневно</span>
+          </a>
+          <div class="tile" data-anim="up">
+            <span class="tile__label mono">Адрес</span>
+            <span class="tile__value">Керамическая ул., 3с7<br>Балашиха</span>
+            <span class="tile__note">встречи у заправки Teboil, сопровождение в бокс</span>
           </div>
-          <div class="contacts__row" data-anim="up">
-            <span class="contacts__label mono">Адрес</span>
-            <span class="contacts__value">Керамическая ул., 3с7<br>Балашиха, Московская область</span>
-            <span class="contacts__note">встречи у заправки Teboil, сопровождение в бокс</span>
-          </div>
-          <div class="contacts__row" data-anim="up">
-            <span class="contacts__label mono">Авито</span>
-            <a class="contacts__value" href="https://www.avito.ru/balashiha/predlozheniya_uslug/udalenie_vmyatin.skoly_tsarapiny_pritertosti_7815733376" target="_blank" rel="noopener">Удаление вмятин, сколы, царапины</a>
-            <span class="contacts__note">цены, фото и отзывы в объявлении</span>
-          </div>
-          <div class="contacts__row" data-anim="up">
-            <span class="contacts__label mono">ВКонтакте</span>
-            <a class="contacts__value" href="https://vk.com/id594368865" target="_blank" rel="noopener">vk.com/id594368865</a>
-            <span class="contacts__note">пришлите фото вмятины — отвечу с оценкой</span>
-          </div>
+          <a class="tile" href="https://www.avito.ru/balashiha/predlozheniya_uslug/udalenie_vmyatin.skoly_tsarapiny_pritertosti_7815733376" target="_blank" rel="noopener" data-anim="up">
+            <span class="tile__label mono">Авито</span>
+            <span class="tile__value">Удаление вмятин,<br>сколы и царапины</span>
+            <span class="tile__note">цены, фото и отзывы в объявлении</span>
+          </a>
+          <a class="tile" href="https://vk.com/id594368865" target="_blank" rel="noopener" data-anim="up">
+            <span class="tile__label mono">ВКонтакте</span>
+            <span class="tile__value">vk.com/id594368865</span>
+            <span class="tile__note">пришлите фото вмятины — отвечу с оценкой</span>
+          </a>
         </div>
 
         <div class="howto" data-anim="up">
           <h3>Как добраться</h3>
-          <p>Мы находимся рядом с заправкой Teboil. Там проходят встречи с клиентами для осмотра или комфортного сопровождения в бокс. Для записи на консультацию и по любым вопросам звоните: <a href="tel:+79973637024">+7 997 363 70 24</a>.</p>
-          <a class="btn btn--outline" href="https://yandex.ru/maps/org/udaleniye_vmyatin/137428932992/" target="_blank" rel="noopener">Открыть в Яндекс Картах</a>
+          <p>Мы находимся рядом с заправкой Teboil. Там проходят встречи с клиентами для осмотра или комфортного сопровождения в бокс. Для записи и по любым вопросам звоните: <a href="tel:+79973637024">+7 997 363 70 24</a>.</p>
         </div>
       </div>
     </section>
@@ -376,63 +341,65 @@
     <!-- ======= 06 КАРТА ======= -->
     <section class="sec sec--map" id="map" aria-label="Карта и карточка организации в Яндекс Картах">
       <div class="wrap">
-        <header class="sec__head" data-anim="up">
-          <span class="sec__idx mono">06</span>
-          <h2 class="sec__title">Мы на карте</h2>
-          <p class="sec__kicker">Керамическая ул., 3с7 · Балашиха</p>
-        </header>
-        <div class="map__actions" data-anim="up">
-          <a class="btn btn--solid" href="https://yandex.ru/maps/org/udaleniye_vmyatin/137428932992/" target="_blank" rel="noopener">Карточка на Яндексе</a>
-          <a class="btn btn--outline" href="https://yandex.ru/maps/org/udaleniye_vmyatin/137428932992/reviews/" target="_blank" rel="noopener">Отзывы</a>
+        <div class="sec__head" data-anim="up">
+          <span class="chip">06 · Карта</span>
+          <h2>Мы на карте</h2>
+          <p class="sec__sub">Керамическая ул., 3с7 — рядом с заправкой Teboil</p>
+        </div>
+        <div class="sec__actions" data-anim="up">
+          <a class="btn btn--grad btn--sm" href="https://yandex.ru/maps/org/udaleniye_vmyatin/137428932992/" target="_blank" rel="noopener">Карточка на Яндексе</a>
+          <a class="btn btn--ghost btn--sm" href="https://www.avito.ru/balashiha/predlozheniya_uslug/udalenie_vmyatin.skoly_tsarapiny_pritertosti_7815733376" target="_blank" rel="noopener">Отзывы на Авито</a>
         </div>
       </div>
-      <iframe
-        class="map__frame"
-        src="https://yandex.ru/map-widget/v1/?ol=biz&amp;oid=137428932992&amp;z=17"
-        width="100%" height="460" style="border:0;" allowfullscreen
-        loading="lazy" referrerpolicy="no-referrer-when-downgrade"
-        title="Карточка организации в Яндекс Картах: выпрямление вмятин без покраски, Балашиха"></iframe>
+      <div class="map">
+        <iframe
+          class="map__frame"
+          src="https://yandex.ru/map-widget/v1/?ol=biz&amp;oid=137428932992&amp;z=17"
+          width="100%" height="460" style="border:0;" allowfullscreen
+          loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          title="Карточка организации в Яндекс Картах: выпрямление вмятин без покраски, Балашиха"></iframe>
+      </div>
     </section>
   </main>
 
   <!-- ======= ПОДВАЛ ======= -->
-  <footer class="footer">
-    <div class="wrap footer__inner">
-      <div class="footer__brand">
-        <span class="brand__mark">PDR</span>
-        <p class="footer__tag">Выпрямление вмятин на вашем авто — Балашиха, Керамическая ул., 3с7</p>
+  <footer class="ftr">
+    <div class="wrap ftr__in">
+      <div class="ftr__brand">
+        <span class="logo__mark">PDR</span>
+        <p>Выпрямление вмятин на вашем авто · Балашиха, Керамическая ул., 3с7</p>
       </div>
-      <nav class="footer__nav" aria-label="Навигация в подвале">
+      <nav class="ftr__nav" aria-label="Навигация в подвале">
         <a href="#method">Метод</a>
         <a href="#master">Мастер</a>
         <a href="#works">Работы</a>
         <a href="#reviews">Отзывы</a>
         <a href="#contacts">Контакты</a>
       </nav>
-      <div class="footer__meta mono">
+      <div class="ftr__meta">
         <a href="tel:+79973637024">+7 997 363 70 24</a>
         <a href="https://vk.com/id594368865" target="_blank" rel="noopener">VK</a>
         <a href="https://www.avito.ru/balashiha/predlozheniya_uslug/udalenie_vmyatin.skoly_tsarapiny_pritertosti_7815733376" target="_blank" rel="noopener">Авито</a>
-        <p class="footer__credit">Фото фона: «Mustang» by davejdoe, CC BY 2.0, via Flickr</p>
-        <p class="footer__copy">© <span id="year">2026</span> PDR Балашиха</p>
+        <p class="ftr__credit mono">Фото фона: «Mustang» by davejdoe, CC BY 2.0, via Flickr</p>
+        <p class="ftr__copy mono">© <span id="year">2026</span> PDR Балашиха</p>
       </div>
     </div>
   </footer>
 
   <!-- Плавающая кнопка звонка -->
-  <a class="fab-call" href="tel:+79973637024" aria-label="Позвонить: +7 997 363 70 24">
+  <a class="fab" href="tel:+79973637024" aria-label="Позвонить: +7 997 363 70 24">
     <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="currentColor" d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
   </a>
 
-  <!-- Просмотр фото работ -->
-  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Просмотр фотографии работы" aria-hidden="true">
-    <button class="lightbox-close" id="lightboxClose" type="button" aria-label="Закрыть просмотр">
+  <!-- Просмотр фото -->
+  <div class="lb" id="lightbox" role="dialog" aria-modal="true" aria-label="Просмотр фотографии работы" aria-hidden="true">
+    <button class="lb__close" id="lightboxClose" type="button" aria-label="Закрыть просмотр">
       <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="currentColor" d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
     </button>
     <img id="lightboxImg" src="" alt="">
-    <p class="lightbox-caption" id="lightboxCaption"></p>
+    <p class="lb__cap" id="lightboxCaption"></p>
   </div>
 
-  <script src="assets/js/script.js"></script>
+  <script src="assets/js/script.js?v=20261024"></script>
 </body>
 </html>
