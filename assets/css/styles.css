@@ -264,7 +264,7 @@ h1, h2, h3 { margin: 0; font-family: var(--f-head); font-weight: 800; letter-spa
 
 .hero__facts {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 16px;
   margin-top: 34px;
   padding-top: 20px;
@@ -322,6 +322,13 @@ h1, h2, h3 { margin: 0; font-family: var(--f-head); font-weight: 800; letter-spa
 
 .lead { font-size: 17px; color: var(--ink-2); max-width: 74ch; margin: 0 0 28px; }
 .note { font-size: 14px; color: var(--muted); margin: 0; }
+.note--accent {
+  flex: 1 1 420px;
+  max-width: 78ch;
+  border-left: 2px solid var(--accent);
+  padding-left: 14px;
+}
+.note--accent strong { color: var(--ink); }
 
 /* ---------- Карточки преимуществ ---------- */
 .cards {
@@ -661,6 +668,7 @@ html.theme-anim, html.theme-anim * {
   .revs { grid-template-columns: 1fr; }
   .ftr__in { grid-template-columns: 1fr; gap: 24px; }
   .map__frame { height: 380px; }
+  .hero__facts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 @media (max-width: 620px) {
